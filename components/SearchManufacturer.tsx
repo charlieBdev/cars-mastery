@@ -10,7 +10,6 @@ const SearchManufacturer = ({
 	manufacturer,
 	setManufacturer,
 }: SearchManufacturerProps) => {
-	const [selectedManufacturer, setSelectedManufacturer] = useState('');
 	const [query, setQuery] = useState('');
 
 	const filteredManufacturers =
@@ -25,7 +24,7 @@ const SearchManufacturer = ({
 
 	return (
 		<div className='search-manufacturer'>
-			<Combobox value={selectedManufacturer} onChange={setSelectedManufacturer}>
+			<Combobox value={manufacturer} onChange={setManufacturer}>
 				<div className='relative w-full'>
 					<Combobox.Button className='absolute top-[14px]'>
 						<Image
@@ -50,19 +49,44 @@ const SearchManufacturer = ({
 						afterLeave={() => setQuery('')}
 					>
 						<Combobox.Options>
-							{filteredManufacturers.map((item) => (
-								<Combobox.Option
-									key={item}
-									className={({ active }) =>
-										`relative search-manufacturer__option ${
-											active ? 'bg-primary-blue text-white' : 'text-gray-900'
-										}`
-									}
-									value={item}
-								>
-									{item}
-								</Combobox.Option>
-							))}
+							{filteredManufacturers.length === 0 && query !== '' ? (
+								<div className='relative cursor-default select-none px-4 py-2 text-gray-900'>
+									Nothing found
+								</div>
+							) : (
+								filteredManufacturers.map((item) => (
+									<Combobox.Option
+										key={item}
+										className={({ active }) =>
+											`relative search-manufacturer__option ${
+												active ? 'bg-primary-blue text-white' : 'text-gray-900'
+											}`
+										}
+										value={item}
+									>
+										{({ selected, active }) => (
+											<>
+												<span
+													className={`block truncate ${
+														selected ? 'font-medium' : 'font-normal'
+													}`}
+												>
+													{item}
+												</span>
+												{selected ? (
+													<span
+														className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+															active ? 'text-white' : 'text-teal-600'
+														}`}
+													>
+														{/* <CheckIcon className='h-5 w-5' aria-hidden='true' /> */}
+													</span>
+												) : null}
+											</>
+										)}
+									</Combobox.Option>
+								))
+							)}
 						</Combobox.Options>
 					</Transition>
 				</div>
