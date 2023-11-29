@@ -1,21 +1,7 @@
 import { CarCard, CustomFilter, Hero, SearchBar } from '@/components';
 import { fetchModels } from '@/utils';
-import { useEffect, useState } from 'react';
 
 export default async function Home() {
-	// const [cars, setCars] = useState(null);
-
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-	// 		try {
-	// 			const models = await fetchModels('Toyota');
-	// 			setCars(models);
-	// 			console.log(models);
-	// 		} catch (err) {}
-	// 	};
-	// 	fetchData();
-	// }, []);
-
 	const allCars = await fetchModels('Toyota');
 	const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 

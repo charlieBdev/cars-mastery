@@ -1,7 +1,8 @@
 export const fetchModels = async (manufacturer: string) => {
+	const apiKey = process.env.NEXT_PUBLIC_CARS_API_KEY;
 	const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}`;
 	const headers = {
-		'X-RapidAPI-Key': '19c1d3e6ccmsh1b95a91a4f98e18p1fd8c8jsn268a8934baa2',
+		'X-RapidAPI-Key': apiKey,
 		'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com',
 	};
 	const options = {
