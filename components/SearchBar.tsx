@@ -45,7 +45,7 @@ const SearchBar = () => {
 			<button
 				type='submit'
 				className={`-ml-3 z-10 ${otherClasses}`}
-				onClick={handleSearch}
+				// onClick={handleSearch}
 			>
 				<Image
 					src='/magnifying-glass.svg'
