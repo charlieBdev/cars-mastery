@@ -1,13 +1,44 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { SearchManufacturer } from '.';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const SearchBar = () => {
-	const handleSearch = () => {};
 	const [manufacturer, setManufacturer] = useState('');
 	const [model, setModel] = useState('');
+	const router = useRouter();
+
+	const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		if (manufacturer === '' && model === '') {
+			return alert('Please fill in the search bar');
+		}
+		updateSearchParams(manufacturer.toLowerCase(), model.toLowerCase());
+	};
+
+	const updateSearchParams = (manufacturer: string, model: string) => {
+		const searchParams = new URLSearchParams(window.location.search);
+
+		if (manufacturer) {
+			searchParams.set('manufacturer', manufacturer);
+		} else {
+			searchParams.delete('manufacturer');
+		}
+
+		if (model) {
+			searchParams.set('model', model);
+		} else {
+			searchParams.delete('model');
+		}
+
+		const newPathname = `${
+			window.location.pathname
+		}?${searchParams.toString()}`;
+
+		router.push(newPathname);
+	};
 
 	const SearchButton = ({ otherClasses }: { otherClasses: string }) => {
 		return (
