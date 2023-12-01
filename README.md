@@ -1,3 +1,5 @@
+# JavaScript Mastery Tutorial
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 The tutorial for this project is [here](https://www.youtube.com/watch?v=pUNSHPyVryU&list=PL6QREj8te1P7gixBDSU8JLvQndTEEX3c3&index=11).
@@ -10,6 +12,8 @@ Alongside building this application, you'll also learn how to:
 - Create custom filter, combo box, and modal elements
 - Maintain a well-organized file and folder structure.
 - Embrace the principles of writing clean code.
+
+Check out the deployed version [here](https://rent-a-car-ssr.vercel.app/).
 
 ## Getting Started
 
