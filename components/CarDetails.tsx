@@ -3,7 +3,6 @@
 import { CarDetailsProps } from '@/types';
 import { generateCarImageUrl } from '@/utils';
 import { Dialog, Transition } from '@headlessui/react';
-import { validateHeaderValue } from 'http';
 import Image from 'next/image';
 import { Fragment } from 'react';
 
@@ -13,7 +12,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
 	return (
 		<>
 			<Transition appear show={isOpen} as={Fragment}>
-				<Dialog as='div' className='z-10' onClose={closeModal}>
+				<Dialog as='div' className='relative z-10' onClose={closeModal}>
 					<Transition.Child
 						as={Fragment}
 						enter='ease-out duration-300'
